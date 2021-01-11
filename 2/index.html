@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ex-dischi-musicali</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <div class="container">
+                <div class="category">
+                    <img src="logo.png" alt="logo" />
+                    <ul>
+                      <li><a @click="currentGenre='all'">Tutto</a></li>
+                      <li><a @click="currentGenre='pop'">Pop</a></li>
+                      <li><a @click="currentGenre='rock'">Rock</a></li>
+                      <li><a @click="currentGenre='jazz'">Jazz</a></li>
+                      <li><a @click="currentGenre='metal'">Metal</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="cds-container container">
+            
+            <!-- Disco ad esempio -->
+            <div v-for="album in genreList" class="cd">
+                <img :src="album.poster" alt="">
+                <h3>{{album.title}}</h3>
+                <span class="author">{{album.author}}</span>
+                <span class="year">{{album.year}}</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js" charset="utf-8"></script>
+</body>
+
+</html>
