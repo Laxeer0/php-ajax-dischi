@@ -16,19 +16,20 @@
             <div class="container">
                 <div class="category">
                     <img src="logo.png" alt="logo" />
+                    <input type="text" placeholder="Ricerca un brano" v-model="searchForm">
                     <ul>
-                      <li><a @click="currentGenre='all'">Tutto</a></li>
-                      <li><a @click="currentGenre='pop'">Pop</a></li>
-                      <li><a @click="currentGenre='rock'">Rock</a></li>
-                      <li><a @click="currentGenre='jazz'">Jazz</a></li>
-                      <li><a @click="currentGenre='metal'">Metal</a></li>
+                        <li><a @click="currentGenre='all'">Tutto</a></li>
+                        <li><a @click="currentGenre='pop'">Pop</a></li>
+                        <li><a @click="currentGenre='rock'">Rock</a></li>
+                        <li><a @click="currentGenre='jazz'">Jazz</a></li>
+                        <li><a @click="currentGenre='metal'">Metal</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
         <div class="cds-container container">
-            
+
             <!-- Disco ad esempio -->
             <div v-for="album in genreList" class="cd">
                 <img :src="album.poster" alt="">

@@ -4,6 +4,7 @@ var root = new Vue({
         apiUrl: "./lib/index.php",
         albums: [],
         currentGenre: 'all',
+        searchForm: '',
 
     },
     created() {
@@ -15,15 +16,30 @@ var root = new Vue({
     },
     computed: {
         genreList() {
-            if (this.currentGenre == 'all') {
-                return this.albums
+            if (this.searchForm == '') {
+                if (this.currentGenre == 'all') {
+                    return this.albums
+                } else {
+                    return this.albums.filter(album => {
+                        return album.genre.toLowerCase().includes(this.currentGenre.toLowerCase())
+                    })
+
+                }
             } else {
-                return this.albums.filter(album => {
-                    return album.genre.toLowerCase().includes(this.currentGenre.toLowerCase())
-                })
+                if (this.currentGenre == 'all') {
+                    return this.albums.filter(album => {
+                        return album.title.toLowerCase().includes(this.searchForm.toLowerCase())
+                    })
+                } else {
+                    return this.albums.filter(album => {
+                        return album.title.toLowerCase().includes(this.searchForm.toLowerCase()) && album.genre.toLowerCase().includes(this.currentGenre.toLowerCase())
+                    })
+
+                }
             }
+
         },
 
-    }
 
-});
+    },
+})
